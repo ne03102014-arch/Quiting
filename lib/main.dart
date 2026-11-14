@@ -301,7 +301,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _addFromFile() async {
-    final files = await FilePicker.platform.pickFiles();
+    final file = await FilePicker.pickFile();
+if (file == null) return;
     if (files.isEmpty) return;
     final file = files.single;
     String text;

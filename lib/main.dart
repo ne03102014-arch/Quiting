@@ -304,7 +304,6 @@ class _HomePageState extends State<HomePage> {
     final file = await FilePicker.pickFile();
 if (file == null) return;
     if (files.isEmpty) return;
-    final file = files.single;
     String text;
     try {
       final bytes = await file.readAsBytes();

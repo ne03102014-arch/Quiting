@@ -1,17 +1,18 @@
-name: jenya_vpn
-description: A real multi-profile VPN client powered by sing-box.
+name: quiting
+description: Quiting VPN client
 publish_to: "none"
-version: 1.0.0+1
+version: 2.1.0+2
+
 environment:
   sdk: ">=3.12.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.5.4
+  file_picker: ^13.3.3
+  mobile_scanner: ^7.5.0
   sing_box: ^1.0.0
-  shared_preferences: ^2.5.3
-  file_picker: ^10.3.3
-  mobile_scanner: ^7.0.1
 
 dev_dependencies:
   flutter_test:

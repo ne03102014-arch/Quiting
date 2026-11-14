@@ -301,26 +301,29 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _addFromFile() async {
-    final file = await FilePicker.pickFile();
-if (file == null) return;
-    if (files.isEmpty) return;
-    String text;
-    try {
-      final bytes = await file.readAsBytes();
-      text = utf8.decode(bytes, allowMalformed: true);
-    } catch (_) {
-      if (file.path == null) {
-        _show('Не удалось прочитать файл.');
-        return;
-      }
-      text = await File(file.path!).readAsString();
+  final file = await FilePicker.pickFile();
+
+  if (file == null) return;
+
+  String text;
+
+  try {
+    final bytes = await file.readAsBytes();
+    text = utf8.decode(bytes, allowMalformed: true);
+  } catch (_) {
+    if (file.path == null) {
+      _show('Не удалось прочитать файл.');
+      return;
     }
-    await _addFromText(
-      text,
-      suggestedName: file.name.replaceFirst(RegExp(r'\.[^.]+$'), ''),
-    );
+
+    text = await File(file.path!).readAsString();
   }
 
+  await _addFromText(
+    text,
+    suggestedName: file.name.replaceFirst(RegExp(r'\.[^.]+$'), ''),
+  );
+}
   Future<void> _addManual() async {
     final controller = TextEditingController();
     final nameController = TextEditingController();
